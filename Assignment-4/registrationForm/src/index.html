@@ -1,13 +1,36 @@
-<!doctype html>
-<html lang="en">
+<!DOCTYPE html>
+<html ng-app="registrationApp">
 <head>
-  <meta charset="utf-8">
-  <title>RegistrationForm</title>
-  <base href="/">
-  <meta name="viewport" content="width=device-width, initial-scale=1">
-  <link rel="icon" type="image/x-icon" href="favicon.ico">
+    <meta charset="UTF-8">
+    <title>Registration Page</title>
+
+    <!-- Bootstrap CSS -->
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+
+    <!-- Custom CSS -->
+    <link rel="stylesheet" href="css/style.css">
+
+    <!-- AngularJS -->
+    <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.8.2/angular.min.js"></script>
+    <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.8.2/angular-route.js"></script>
+
+    <!-- App JS -->
+    <script src="app.js"></script>
 </head>
+
 <body>
-  <app-root></app-root>
+
+<nav class="navbar navbar-expand-lg navbar-dark bg-dark">
+    <a class="navbar-brand" href="#!/">RegistrationApp</a>
+    <div class="ml-auto">
+        <a class="btn btn-outline-light mr-2" href="#!/login">Login</a>
+        <a class="btn btn-outline-light" href="#!/register">Register</a>
+    </div>
+</nav>
+
+<div class="container mt-5">
+    <div ng-view></div>
+</div>
+
 </body>
 </html>
