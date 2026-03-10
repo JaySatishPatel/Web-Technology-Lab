@@ -3,6 +3,7 @@ import Home from "./pages/Home";
 import ClubPage from "./pages/ClubPage";
 import EventDetails from "./pages/EventDetails";
 import Register from "./pages/Register";
+import "./App.css";
 
 function App() {
   return (
