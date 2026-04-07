@@ -1,0 +1,266 @@
+<!-- 
+QUICK START GUIDE - Employee Management System
+Follow these steps to get your system up and running
+-->
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Quick Start - Employee Management System</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            min-height: 100vh;
+            padding: 20px;
+        }
+        .container {
+            max-width: 900px;
+            margin: 0 auto;
+            background: white;
+            padding: 40px;
+            border-radius: 10px;
+            box-shadow: 0 10px 40px rgba(0, 0, 0, 0.2);
+        }
+        h1 {
+            color: #333;
+            margin-bottom: 30px;
+            text-align: center;
+            font-size: 2.5em;
+        }
+        h2 {
+            color: #667eea;
+            margin-top: 30px;
+            margin-bottom: 15px;
+            border-bottom: 2px solid #667eea;
+            padding-bottom: 10px;
+        }
+        .step {
+            background: #f8f9fa;
+            padding: 15px;
+            margin-bottom: 15px;
+            border-radius: 5px;
+            border-left: 4px solid #667eea;
+        }
+        .step h3 {
+            color: #333;
+            margin-bottom: 10px;
+        }
+        .code-block {
+            background: #2c3e50;
+            color: #27ae60;
+            padding: 15px;
+            border-radius: 5px;
+            margin: 10px 0;
+            font-family: 'Courier New', monospace;
+            overflow-x: auto;
+            font-size: 0.9em;
+        }
+        .checklist {
+            list-style: none;
+            padding-left: 0;
+        }
+        .checklist li {
+            padding: 8px 0;
+            padding-left: 30px;
+            position: relative;
+        }
+        .checklist li:before {
+            content: "✓";
+            position: absolute;
+            left: 0;
+            color: #27ae60;
+            font-weight: bold;
+            font-size: 1.2em;
+        }
+        .info-box {
+            background: #e8f4f8;
+            border-left: 4px solid #3498db;
+            padding: 15px;
+            margin: 15px 0;
+            border-radius: 5px;
+            color: #0c5460;
+        }
+        .success-box {
+            background: #d5f4e6;
+            border-left: 4px solid #27ae60;
+            padding: 15px;
+            margin: 15px 0;
+            border-radius: 5px;
+            color: #155724;
+        }
+        .btn-continue {
+            display: inline-block;
+            background: #27ae60;
+            color: white;
+            padding: 12px 30px;
+            border-radius: 5px;
+            text-decoration: none;
+            margin-top: 20px;
+            font-weight: bold;
+            transition: background 0.3s;
+        }
+        .btn-continue:hover {
+            background: #219653;
+        }
+        table {
+            width: 100%;
+            border-collapse: collapse;
+            margin: 15px 0;
+        }
+        th, td {
+            border: 1px solid #ddd;
+            padding: 12px;
+            text-align: left;
+        }
+        th {
+            background: #f8f9fa;
+            font-weight: 600;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h1>🚀 Quick Start Guide</h1>
+        <p style="text-align: center; color: #666; margin-bottom: 30px;">
+            Get your Employee Management System up and running in 3 easy steps
+        </p>
+
+        <h2>Step 1: Start XAMPP Services</h2>
+        <div class="step">
+            <h3>Launch XAMPP Control Panel</h3>
+            <ul class="checklist">
+                <li>Open XAMPP Control Panel</li>
+                <li>Click "Start" next to Apache</li>
+                <li>Click "Start" next to MySQL</li>
+                <li>Wait for them to show "Running" (green indicator)</li>
+            </ul>
+            <div class="info-box">
+                💡 <strong>Tip:</strong> XAMPP is usually located at C:\xampp\xampp-control.exe
+            </div>
+        </div>
+
+        <h2>Step 2: Import the Database</h2>
+        <div class="step">
+            <h3>Create the database and tables</h3>
+            <ol style="padding-left: 20px;">
+                <li>Open your browser and go to <strong>http://localhost/phpmyadmin</strong></li>
+                <li>You should see the phpMyAdmin login page</li>
+                <li>Click "Import" tab at the top</li>
+                <li>Click "Choose File" and select <strong>database.sql</strong> from the EmployeeManagementSystem folder</li>
+                <li>Click "Go" to import the database</li>
+            </ol>
+            <div class="success-box">
+                ✓ You should see a success message: "Import has been successfully finished"
+            </div>
+        </div>
+
+        <h2>Step 3: Access the Application</h2>
+        <div class="step">
+            <h3>Open the Employee Management System</h3>
+            <ol style="padding-left: 20px;">
+                <li>Open your web browser</li>
+                <li>Navigate to: <strong>http://localhost/EmployeeManagementSystem/</strong></li>
+                <li>You should see the employee management dashboard</li>
+            </ol>
+            <div class="success-box">
+                ✓ Your system is ready to use!
+            </div>
+        </div>
+
+        <h2>What's Included</h2>
+        <table>
+            <thead>
+                <tr>
+                    <th>File</th>
+                    <th>Purpose</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr>
+                    <td><strong>index.php</strong></td>
+                    <td>View all employees and search</td>
+                </tr>
+                <tr>
+                    <td><strong>add.php</strong></td>
+                    <td>Add new employee records</td>
+                </tr>
+                <tr>
+                    <td><strong>update.php</strong></td>
+                    <td>Edit employee information</td>
+                </tr>
+                <tr>
+                    <td><strong>delete.php</strong></td>
+                    <td>Remove employee records</td>
+                </tr>
+                <tr>
+                    <td><strong>db_connect.php</strong></td>
+                    <td>Database connection configuration</td>
+                </tr>
+                <tr>
+                    <td><strong>style.css</strong></td>
+                    <td>Beautiful styling and responsive design</td>
+                </tr>
+                <tr>
+                    <td><strong>script.js</strong></td>
+                    <td>Form validation and search functionality</td>
+                </tr>
+                <tr>
+                    <td><strong>database.sql</strong></td>
+                    <td>Database schema with sample data</td>
+                </tr>
+            </tbody>
+        </table>
+
+        <h2>Features</h2>
+        <ul class="checklist" style="font-size: 1.05em;">
+            <li>Add new employee records with validation</li>
+            <li>View all employees in a searchable table</li>
+            <li>Update employee information</li>
+            <li>Delete employees with confirmation</li>
+            <li>Real-time search functionality</li>
+            <li>Professional, responsive design</li>
+            <li>Secure database connections</li>
+            <li>Sample data included</li>
+        </ul>
+
+        <h2>Troubleshooting</h2>
+        <div class="step">
+            <h3>Common Issues and Solutions</h3>
+            
+            <strong style="display: block; margin-top: 15px;">❌ "404 Not Found"</strong>
+            <p>Check that the URL is: <code style="background: #f0f0f0; padding: 2px 5px;">http://localhost/EmployeeManagementSystem/</code></p>
+            
+            <strong style="display: block; margin-top: 15px;">❌ "Connection failed"</strong>
+            <p>Ensure MySQL is running in XAMPP Control Panel</p>
+            
+            <strong style="display: block; margin-top: 15px;">❌ "Table doesn't exist"</strong>
+            <p>Re-import the database.sql file in phpMyAdmin</p>
+            
+            <strong style="display: block; margin-top: 15px;">❌ Database won't import</strong>
+            <p>Try importing using the SQL tab instead of the Import tab</p>
+        </div>
+
+        <h2>Next Steps</h2>
+        <div class="info-box">
+            👉 <strong>Ready?</strong> Click the button below to go to your Employee Management System!
+        </div>
+
+        <center>
+            <a href="index.php" class="btn-continue">Go to Dashboard →</a>
+        </center>
+
+        <div style="margin-top: 40px; padding-top: 20px; border-top: 1px solid #ddd; color: #666; text-align: center;">
+            <p>For more detailed information, see <code style="background: #f0f0f0; padding: 2px 5px;">README.md</code></p>
+            <p style="font-size: 0.9em; margin-top: 10px;">Employee Management System v1.0</p>
+        </div>
+    </div>
+</body>
+</html>
