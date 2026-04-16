@@ -1,0 +1,77 @@
+# BookStore Application - Compilation Instructions
+
+## Quick Start - Windows (XAMPP Users)
+
+### Step 1: Ensure MySQL JDBC Driver is Installed
+1. Download from: https://dev.mysql.com/downloads/connector/j/
+2. Extract the `mysql-connector-java-8.x.x.jar` file
+3. Copy to: `C:\xampp\tomcat\lib\`
+
+### Step 2: Compile the Java Files
+Open Command Prompt and run:
+
+```cmd
+cd C:\xampp\tomcat\webapps\BookStoreApp\WEB-INF\classes
+
+javac -cp "C:\xampp\tomcat\lib\mysql-connector-java.jar" *.java
+```
+
+If compilation is successful, you should see `.class` files generated in the same directory.
+
+### Step 3: Verify MySQL Database
+Open MySQL and run:
+
+```sql
+CREATE DATABASE bookstore;
+USE bookstore;
+
+CREATE TABLE ebookshop (
+    book_id INT PRIMARY KEY AUTO_INCREMENT,
+    book_title VARCHAR(100),
+    book_author VARCHAR(100),
+    book_price DOUBLE,
+    quantity INT
+);
+```
+
+### Step 4: Start Tomcat and Access Application
+1. Start Apache Tomcat from XAMPP Control Panel
+2. Open browser and go to: `http://localhost:8080/BookStoreApp/`
+
+## Troubleshooting Compilation
+
+### Error: "cannot find symbol - class ServletException"
+- Add servlet-api.jar to classpath:
+```cmd
+javac -cp "C:\xampp\tomcat\lib\mysql-connector-java.jar;C:\xampp\tomcat\lib\servlet-api.jar" *.java
+```
+
+### Error: "cannot find symbol - class HttpServlet"
+- Ensure servlet-api.jar is in classpath (see above)
+
+### Error: "package javax.servlet does not exist"
+- Make sure Tomcat lib path is correct in classpath
+
+## Full Compilation Command (with all dependencies)
+
+```cmd
+javac -cp "C:\xampp\tomcat\lib\*" *.java
+```
+
+This will compile with ALL jars in the Tomcat lib directory.
+
+## After Successful Compilation
+1. Restart Tomcat
+2. Navigate to `http://localhost:8080/BookStoreApp/`
+3. Start using the application!
+
+## File Organization
+```
+WEB-INF/
+  classes/
+    *.java          (Source files)
+    *.class         (Compiled files - auto-generated)
+  web.xml
+```
+
+The compiled `.class` files will be used by Tomcat to run the servlets.

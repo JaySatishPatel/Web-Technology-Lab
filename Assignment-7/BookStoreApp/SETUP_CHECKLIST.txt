@@ -1,0 +1,212 @@
+# BookStore Application - Setup Checklist
+
+## Pre-Requisites Installation
+- [ ] Java Development Kit (JDK) 8+ installed
+- [ ] Apache Tomcat 7.0+ installed (XAMPP includes this)
+- [ ] MySQL Server installed and running
+- [ ] Text editor or IDE ready
+
+## Step 1: MySQL Database Setup
+- [ ] Start MySQL Server
+- [ ] Open MySQL command line or phpMyAdmin
+- [ ] Copy and execute the SQL script below:
+
+```sql
+CREATE DATABASE bookstore;
+USE bookstore;
+
+CREATE TABLE ebookshop (
+    book_id INT PRIMARY KEY AUTO_INCREMENT,
+    book_title VARCHAR(100),
+    book_author VARCHAR(100),
+    book_price DOUBLE,
+    quantity INT
+);
+
+-- Optional: Add sample data
+INSERT INTO ebookshop (book_title, book_author, book_price, quantity) VALUES
+('Java Programming', 'Herbert Schildt', 45.99, 10),
+('Python for Beginners', 'Mark Lutz', 35.50, 15),
+('Web Development', 'Jon Duckett', 54.99, 8);
+```
+
+- [ ] Verify table created successfully
+
+## Step 2: Download MySQL JDBC Driver
+- [ ] Visit: https://dev.mysql.com/downloads/connector/j/
+- [ ] Download latest version (8.0+ recommended)
+- [ ] Extract the JAR file
+- [ ] Copy `mysql-connector-java-x.x.x.jar` to `c:\xampp\tomcat\lib\`
+- [ ] For non-XAMPP: Copy to `TOMCAT_HOME\lib\`
+
+## Step 3: Verify Database Credentials
+- [ ] Open: `WEB-INF/classes/DBConnection.java`
+- [ ] Verify/Update:
+  - [ ] DATABASE_URL: `jdbc:mysql://localhost:3306/bookstore`
+  - [ ] DATABASE_USER: `root` (or your username)
+  - [ ] DATABASE_PASSWORD: `` (empty if default) or your password
+
+## Step 4: Compile Java Files
+### Option A: Use Batch Script (Windows)
+- [ ] Navigate to: `c:\xampp\tomcat\webapps\BookStoreApp\WEB-INF\classes\`
+- [ ] Double-click: `compile.bat`
+- [ ] Wait for "Compilation SUCCESSFUL" message
+- [ ] Press any key to close
+
+### Option B: Manual Compilation
+- [ ] Open Command Prompt
+- [ ] Navigate to: `c:\xampp\tomcat\webapps\BookStoreApp\WEB-INF\classes\`
+- [ ] Run:
+  ```bash
+  javac -cp "c:\xampp\tomcat\lib\*" *.java
+  ```
+- [ ] Verify all `.class` files are created
+
+### Option C: Using IDE
+- [ ] Create a Java project in your IDE
+- [ ] Add MySQL JDBC JAR to build path
+- [ ] Add Tomcat servlet-api.jar to build path
+- [ ] Compile all Java files
+
+## Step 5: Verify Files Structure
+```
+c:\xampp\tomcat\webapps\BookStoreApp\
+├── index.html                               ✓
+├── addBook.html                             ✓
+├── editBook.html                            ✓
+├── README.md                                ✓
+├── PROJECT_SUMMARY.txt                      ✓
+├── COMPILATION_GUIDE.txt                    ✓
+└── WEB-INF\
+    ├── web.xml                              ✓
+    └── classes\
+        ├── DBConnection.java                ✓
+        ├── Book.java                        ✓
+        ├── ViewBooksServlet.java            ✓
+        ├── AddBookServlet.java              ✓
+        ├── EditBookServlet.java             ✓
+        ├── UpdateBookServlet.java           ✓
+        ├── DeleteBookServlet.java           ✓
+        ├── compile.bat                      ✓
+        ├── compile.sh                       ✓
+        ├── DBConnection.class               (Auto-generated)
+        ├── Book.class                       (Auto-generated)
+        ├── ViewBooksServlet.class           (Auto-generated)
+        ├── AddBookServlet.class             (Auto-generated)
+        ├── EditBookServlet.class            (Auto-generated)
+        ├── UpdateBookServlet.class          (Auto-generated)
+        └── DeleteBookServlet.class          (Auto-generated)
+```
+
+- [ ] All files present and `.class` files generated
+
+## Step 6: Restart Tomcat
+- [ ] Stop Apache Tomcat (XAMPP Control Panel: Click Stop)
+- [ ] Wait 5 seconds
+- [ ] Start Apache Tomcat (XAMPP Control Panel: Click Start)
+- [ ] Wait for "started" status message
+
+## Step 7: Test Application
+- [ ] Open browser: `http://localhost:8080/BookStoreApp/`
+- [ ] You should see the home page with buttons
+- [ ] Click "View All Books" (if no errors, setup is correct!)
+- [ ] Click "Add New Book" and test form
+
+## Step 8: Final CRUD Testing
+- [ ] **CREATE**: Add a new book via the form
+  - [ ] Fill all fields: Title, Author, Price, Quantity
+  - [ ] Click "Add Book"
+  - [ ] Verify success message
+  - [ ] Check book appears in the list
+
+- [ ] **READ**: View all books
+  - [ ] Click "View All Books"
+  - [ ] Verify all books displayed in table
+  - [ ] Check all columns visible
+
+- [ ] **UPDATE**: Edit a book
+  - [ ] Click "Edit" button next to a book
+  - [ ] Modify any field
+  - [ ] Click "Update Book"
+  - [ ] Verify success message
+  - [ ] Verify changes in the list
+
+- [ ] **DELETE**: Delete a book
+  - [ ] Click "Delete" button next to a book
+  - [ ] Confirm the deletion
+  - [ ] Verify success message
+  - [ ] Verify book removed from list
+
+## Troubleshooting Checklist
+
+### Application Not Loading (404 Error)
+- [ ] Verify Tomcat is running
+- [ ] Check URL: `http://localhost:8080/BookStoreApp/`
+- [ ] Clear Tomcat work directory and restart
+- [ ] Check logs in `c:\xampp\tomcat\logs\catalina.log`
+
+### Database Connection Error
+- [ ] MySQL Server is running
+- [ ] MySQL JDBC JAR is in `c:\xampp\tomcat\lib\`
+- [ ] Database credentials correct in `DBConnection.java`
+- [ ] Check `bookstore` database exists
+- [ ] Restart Tomcat after making changes
+
+### Compilation Errors
+- [ ] Verify JDK path is correct
+- [ ] MySQL JDBC JAR in classpath
+- [ ] Tomcat servlet-api.jar available
+- [ ] Re-run compile.bat or compile command
+- [ ] Check for syntax errors in Java files
+
+### "Cannot Find Symbol" Error during Compilation
+- [ ] Ensure MySQL JDBC driver JAR is in lib directory
+- [ ] Run compile command from correct directory
+- [ ] Use full classpath: `javac -cp "c:\xampp\tomcat\lib\*" *.java`
+
+### Port 3306 in use (MySQL)
+- [ ] Check if another instance of MySQL is running
+- [ ] Kill process using port 3306
+- [ ] Restart MySQL in XAMPP
+
+### Port 8080 in use (Tomcat)
+- [ ] Check if another instance of Tomcat is running
+- [ ] Update XAMPP port in server.xml (advanced)
+- [ ] Kill process using port 8080
+
+## Documentation Reference
+- [ ] Read `README.md` for detailed guide
+- [ ] Read `PROJECT_SUMMARY.txt` for overview
+- [ ] Read `COMPILATION_GUIDE.txt` for compilation help
+
+## Success Indicators
+- ✓ All Java files compile without errors
+- ✓ Home page loads successfully
+- ✓ "View All Books" page loads without errors
+- ✓ Can add a new book successfully
+- ✓ Can view added book in the list
+- ✓ Can edit a book successfully
+- ✓ Can delete a book successfully
+
+## Application URLs (Bookmark These)
+- Home: `http://localhost:8080/BookStoreApp/`
+- Books List: `http://localhost:8080/BookStoreApp/books`
+- Add Book Form: `http://localhost:8080/BookStoreApp/addBook.html`
+
+## Support Resources
+- MySQL Documentation: https://dev.mysql.com/doc/
+- Servlet API: https://tomcat.apache.org/
+- Java Documentation: https://docs.oracle.com/en/java/
+
+---
+
+**Notes:**
+- Keep MySQL JDBC JAR version updated
+- Backup your database regularly
+- Test thoroughly before production use
+- Review code comments for understanding implementation
+
+**Start Date:** [Fill in when you start]
+**Completion Date:** [Fill in when done]
+
+Good luck! 🚀
